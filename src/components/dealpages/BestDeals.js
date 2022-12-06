@@ -7,7 +7,7 @@ export const BestDeals = () => {
    useEffect(
       () => {
          const fetchDeals = async () => {
-            const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`)
+            const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=1&metacritic=80`)
             const dealsArray = await response.json()
             setBestDeals(dealsArray)
          }
@@ -17,31 +17,33 @@ export const BestDeals = () => {
    )
 
    return <>
-         <Table striped border hover response>
-         <thead>
-            <tr>
-               <th></th>
-               <th>Game Title</th>
-               <th>Normal Price</th>
-               <th>Sale Price</th>
-               <th>Meta Critic Rating</th>
-            </tr>
-         </thead>
-         <tbody>
+      <Table striped border="true" hover responsive>
+      <thead>
+         <tr>
+            <th></th>
+            <th>Game Title</th>
+            <th>Normal Price</th>
+            <th>Sale Price</th>
+            <th>Meta Critic Rating</th>
+            <th>Deal Rating</th>
+         </tr>
+      </thead>
+      <tbody>
          {bestDeals.map(
             (deal) => {
                return (
-                  <tr>
-                     <td>{<img src={deal.thumb}></img>}</td>
+                  <tr key={`gameID--${deal.gameID}`}>
+                     <td>{<img src={deal.thumb} alt="thumbnail for game"></img>}</td>
                      <td>{deal.title}</td>
                      <td>{deal.normalPrice}</td>
                      <td>{deal.salePrice}</td>
                      <td>{deal.metacriticScore}</td>
+                     <td>{deal.dealRating}</td>
                   </tr>)
                   }
                )
             }
-            </tbody>
-         </Table>
+         </tbody>
+      </Table>
    </>
 }

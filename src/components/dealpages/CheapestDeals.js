@@ -1,4 +1,47 @@
-export const CheapestDeals = () => {
+import { useEffect, useState } from "react"
+import { Table } from "react-bootstrap"
 
-   return <></>
+export const CheapestDeals = () => {
+   const [cheapestDeals, setCheapestDeals] = useState([])
+
+   useEffect(
+      () => {
+         const fetchDeals = async () => {
+            const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=10&sortBy=Price&metacritic=60`)
+            const dealsArray = await response.json()
+            setCheapestDeals(dealsArray)
+         }
+         fetchDeals()
+      },
+      []
+   )
+
+   return <>
+      <Table striped border="true" hover responsive>
+      <thead>
+         <tr>
+            <th></th>
+            <th>Game Title</th>
+            <th>Normal Price</th>
+            <th>Sale Price</th>
+            <th>Meta Critic Rating</th>
+         </tr>
+      </thead>
+      <tbody>
+         {cheapestDeals.map(
+            (deal) => {
+               return (
+                  <tr key={`gameID--${deal.gameID}`}>
+                     <td>{<img src={deal.thumb} alt="thumbnail for game"></img>}</td>
+                     <td>{deal.title}</td>
+                     <td>{deal.normalPrice}</td>
+                     <td>{deal.salePrice}</td>
+                     <td>{deal.metacriticScore}</td>
+                  </tr>)
+                  }
+               )
+            }
+         </tbody>
+      </Table>
+   </>
 }

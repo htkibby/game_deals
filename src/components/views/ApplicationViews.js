@@ -2,6 +2,7 @@ import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { BestDeals } from "../dealpages/BestDeals";
 import { CheapestDeals } from "../dealpages/CheapestDeals";
 import { PhotoUpload } from "../photoStorage/PhotoUpload";
+import { SavedGames } from "../userpages/SavedGames";
 
 export const ApplicationViews = () => {
   let navigate = useNavigate();
@@ -19,7 +20,7 @@ export const ApplicationViews = () => {
         </Route>
           <Route path="bestdeals" element={<BestDeals />} />
           <Route path="cheapestdeals" element={<CheapestDeals />} />
-          <Route path="savedgames" />
+          <Route path="savedgames" element={<SavedGames/>} />
           <Route path="photoupload" element={<PhotoUpload />} />
     </Routes>
   );
