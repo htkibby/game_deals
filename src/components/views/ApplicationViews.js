@@ -20,7 +20,7 @@ export const ApplicationViews = () => {
         </Route>
           <Route path="bestdeals" element={<BestDeals />} />
           <Route path="cheapestdeals" element={<CheapestDeals />} />
-          <Route path="savedgames" element={<SavedGames/>} />
+          <Route path="savedgames" element={<SavedGames />} />
           <Route path="photoupload" element={<PhotoUpload />} />
     </Routes>
   );
