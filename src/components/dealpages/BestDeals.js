@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import Table from 'react-bootstrap/Table'
+import { useParams } from "react-router-dom"
 
 export const BestDeals = () => {
    const [bestDeals, setBestDeals] = useState([])
+   const {storeId} = useParams()
 
    useEffect(
       () => {
