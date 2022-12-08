@@ -10,7 +10,7 @@ export const EditGameForm = () => {
    const [stores, setStores] = useState([])
    const navigate = useNavigate()
 
-   useState(
+   useEffect(
       () => {
          const fetchGame = async () => {
             const response = await fetch(`http://localhost:8088/customGames/${customGamesId}`)
