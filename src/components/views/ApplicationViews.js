@@ -3,6 +3,7 @@ import { BestDeals } from "../dealpages/BestDeals";
 import { CheapestDeals } from "../dealpages/CheapestDeals";
 import { PhotoUpload } from "../photoStorage/PhotoUpload";
 import { CustomGameForm } from "../userpages/CustomGameForm";
+import { EditGameForm } from "../userpages/EditGameForm";
 import { SavedGames } from "../userpages/SavedGames";
 
 export const ApplicationViews = () => {
@@ -24,6 +25,7 @@ export const ApplicationViews = () => {
           <Route path="savedgames" element={<SavedGames />} />
           <Route path="photoupload" element={<PhotoUpload />} />
           <Route path="customgameform" element={<CustomGameForm />} />
+          <Route path="customgame/:customGamesId" element={<EditGameForm />} />
     </Routes>
   );
 };
