@@ -34,6 +34,16 @@ export const EditGameForm = () => {
       []
    )
 
+   const deleteButton = () => {
+      const deleteButtonAction = async () => {
+         await fetch(`http://localhost:8088/customGames/${customGame.id}`,{
+            method : "DELETE"
+         })
+         navigate('/savedgames')
+      }
+      deleteButtonAction()
+   }
+
    const handleEditButtonClick = (event) => {
       event.preventDefault()
 
@@ -144,6 +154,7 @@ export const EditGameForm = () => {
       <Button variant="primary" type="submit" onClick={(clickEvent) => handleEditButtonClick(clickEvent)}>
         Submit
       </Button>
+      <Button onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</Button>
     </Form>
    )
 }

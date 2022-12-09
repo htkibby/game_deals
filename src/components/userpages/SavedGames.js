@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Card, CardGroup } from "react-bootstrap"
+import { Button, Card, CardGroup} from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 export const SavedGames = () => {
    const [customGames, setCustomGames] = useState([])
@@ -44,13 +45,19 @@ export const SavedGames = () => {
                         {game.notes}
                      </Card.Text>
                   </Card.Body>
+                  <Link to={`/customgame/${game.id}`}><Button variant="primary">Edit</Button></Link>
                   <Card.Footer>
-                     <small className="text-muted">Last updated 3 mins ago</small>
+                     <small className="text-muted">Listed on {game.store}</small>
                   </Card.Footer>
                </Card>)
             }
             )}
          </CardGroup>
+      <div className="d-grid gap-2">
+         <Button variant="primary" size="lg" href="/customgameform">
+         Want to add your own game? Click here!
+         </Button>
+      </div>   
       </>
    )
 }
