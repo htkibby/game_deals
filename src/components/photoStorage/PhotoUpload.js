@@ -29,7 +29,7 @@ export const PhotoUpload = () => {
       <div>
         {/* A file upload is simply an input with type "file" */}
         <input type="file" onChange={handleChange} />
-        <button basic color="green" onClick={handleUpload}>
+        <button primary color="green" onClick={handleUpload}>
           Upload Photo
         </button>
       </div>

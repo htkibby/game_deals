@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { PhotoUpload } from "../photoStorage/PhotoUpload"
 
 export const CustomGameForm = () => {
   const localGamesUser = localStorage.getItem("capstone_user")
@@ -8,7 +9,7 @@ export const CustomGameForm = () => {
   const [stores, setStores] = useState([])
   const [customGame, updateCustomGame] = useState({
     title: "",
-    dateCreated: "",
+    dateCreated: new Date(),
     pic: "",
     normPrice: 0,
     salePrice: 0,
@@ -68,9 +69,18 @@ export const CustomGameForm = () => {
 
       <Form.Group as={Col} controlId="formGridPic">
         <Form.Label>Game Picture</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control 
+        placeholder="URL here"
+        value={customGame.pic}
+        onChange={
+          (event) => {
+            const copy = {...customGame}
+            copy.pic = event.target.value
+            updateCustomGame(copy)
+          }
+        } />
         <Form.Text>
-        Please upload a thumbnail image of the game 
+        Please upload the URL of the image you want to use
         </Form.Text>
       </Form.Group>
     </Row>
@@ -92,14 +102,14 @@ export const CustomGameForm = () => {
       <Form.Group as={Col} controlId="formGridZip">
         <Form.Label>Sale Price</Form.Label>
         <Form.Control 
-          value={customGame.salePrice}
-          onChange={
-            (event) => {
-                const copy = {...customGame}
-                copy.salePrice = event.target.value
-                updateCustomGame(copy)
-            }
-          } />
+        value={customGame.salePrice}
+        onChange={
+          (event) => {
+              const copy = {...customGame}
+              copy.salePrice = event.target.value
+              updateCustomGame(copy)
+          }
+        } />
       </Form.Group>
     </Row>
 

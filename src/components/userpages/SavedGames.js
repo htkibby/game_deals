@@ -35,7 +35,7 @@ export const SavedGames = () => {
          {filteredGames.map(
             (game) => {
             return (
-               <Card >
+               <Card key={`savedgame--${game.id}`}>
                   <Card.Img variant="top" src={game.pic} />
                   <Card.Body>
                      <Card.Title>{game.title}</Card.Title>

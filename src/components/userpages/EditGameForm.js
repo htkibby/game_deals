@@ -90,12 +90,21 @@ export const EditGameForm = () => {
         </Form.Group>
   
         <Form.Group as={Col} controlId="formGridPic">
-          <Form.Label>Game Picture</Form.Label>
-          <Form.Control type="file" />
-          <Form.Text>
-          Please upload a thumbnail image of the game 
-          </Form.Text>
-        </Form.Group>
+        <Form.Label>Game Picture</Form.Label>
+        <Form.Control 
+        placeholder="URL here"
+        value={customGame.pic}
+        onChange={
+          (event) => {
+            const copy = {...customGame}
+            copy.pic = event.target.value
+            setCustomGame(copy)
+          }
+        } />
+        <Form.Text>
+        Please upload the URL of the image you want to use
+        </Form.Text>
+      </Form.Group>
       </Row>
   
       <Row className="mb-3">
@@ -141,11 +150,15 @@ export const EditGameForm = () => {
           }
         >
           <option>Choose the Store this game is in...</option>
+          
           {stores.map(
             (store) => {
-              return (
-                <option key={`store--${store.storeID}`}>{store.storeName}</option>
-              )
+              if (store.isActive === 1) {
+                return (
+                  <option key={`store--${store.storeID}`}>{store.storeName}</option>
+                )} else {
+                  return ""
+              }
             }
           )}
         </Form.Select>
