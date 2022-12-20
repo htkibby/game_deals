@@ -13,7 +13,7 @@ export const ApplicationViews = () => {
     <Routes>
       <Route path="/"element={
         <>
-          <h1>A Blank Page!!</h1>
+          <h1>Welcom to Game Deals</h1>
 
           <Outlet />
         </>
