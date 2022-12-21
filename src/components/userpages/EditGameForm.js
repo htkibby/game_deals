@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
-import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export const EditGameForm = () => {
    const {customGamesId} = useParams()

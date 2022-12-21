@@ -7,7 +7,6 @@ import { EditGameForm } from "../userpages/EditGameForm";
 import { SavedGames } from "../userpages/SavedGames";
 
 export const ApplicationViews = () => {
-  let navigate = useNavigate();
 
   return (
     <Routes>

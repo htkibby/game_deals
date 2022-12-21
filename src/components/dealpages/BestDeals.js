@@ -6,6 +6,7 @@ export const BestDeals = () => {
    const [bestDeals, setBestDeals] = useState([])
    const [stores, setStores] = useState([])
    const [storeId, setStoreId] = useState(1)
+   const [storeName, setStoreName] = useState("Steam")
 
    useEffect(
       () => {
@@ -40,6 +41,7 @@ export const BestDeals = () => {
                   <Dropdown.Item href="#/store--" value={store.storeID} key={`store--${store.storeID}`} onClick={
                   () => {
                      const copy = {...store}
+                     setStoreName(copy.storeName)
                      setStoreId(copy.storeID)
                   }
                   }>{store.storeName}</Dropdown.Item>
@@ -52,7 +54,7 @@ export const BestDeals = () => {
       <Table striped border="true" hover responsive>
       <thead>
          <tr>
-            <th>{stores.storeName}</th>
+            <th>{storeName}</th>
             <th>Game Title</th>
             <th>Normal Price</th>
             <th>Sale Price</th>
